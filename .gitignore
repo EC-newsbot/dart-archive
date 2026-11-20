@@ -232,4 +232,4 @@ assets/wall/
 .DS_Store
 
 # 원본 폰트 파일(서브셋 woff2만 docs/에 둔다)
-fonts/
+/fonts/
