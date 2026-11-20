@@ -81,7 +81,7 @@ def build_one(env, data, out):
         a["bio"] = a.get("bio") or []
         a["statement"] = a.get("statement") or ""
         a["cited"] = a.get("cited") or None
-        a["works"] = [dict(w, caption=w.get("caption") or "") for w in (a.get("works") or [])]
+        a["works"] = [dict(w, caption=w.get("caption") or "", cited=w.get("cited") or None) for w in (a.get("works") or [])]
         artists.append(a)
     base = out / "a" / code
     written = []
@@ -154,6 +154,8 @@ def main():
     shutil.copyfile(ROOT / "static" / "style.css", out / "static" / "style.css")
     written.append(out / "static" / "style.css")
     (out / ".nojekyll").write_text("", encoding="utf-8")
+    # QR로만 들어오는 아카이브: 검색엔진 색인(특히 이미지 검색)을 막는다. 공개 검색을 원하면 이 줄과 base.html의 robots 메타를 지운다.
+    (out / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
     latest = max(codes)
     (out / "index.html").write_text(
         f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=a/{latest}/">'

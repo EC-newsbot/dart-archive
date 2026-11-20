@@ -40,6 +40,7 @@
       <img src="{{ w.src }}" alt="{{ w.title }}" loading="lazy"{% if w.aspect %} style="aspect-ratio: auto {{ w.aspect }}"{% endif %}>
       <h2>{{ w.title }}</h2>
       {% if w.place %}<div class="place">{{ w.place }}</div>{% endif %}
+      {% if w.cited %}<blockquote>{% for p in w.cited.text | paras %}<p>{{ p }}</p>{% endfor %}{% if w.cited.source %}<cite>{{ w.cited.source }}</cite>{% endif %}</blockquote>{% endif %}
       {% if w.caption %}<div class="caption">{% for p in w.caption | paras %}<p>{{ p }}</p>{% endfor %}</div>{% endif %}
     </article>
     {% endfor %}

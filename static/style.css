@@ -126,6 +126,7 @@ blockquote cite {
 .work img { width: 100%; height: auto; display: block; }   /* 원본 비율. cover 금지 */
 .work h2 { margin: 12px 0 0; font: 400 15px/1.5 var(--serif); letter-spacing: 0.04em; }
 .work .place { margin-top: 4px; font: 11px/1.6 var(--sans); letter-spacing: 0.04em; color: var(--tx-3); }
+.work blockquote { margin-top: 10px; font-size: 13px; line-height: 1.85; color: var(--tx-2); }
 .work .caption { margin-top: 10px; font-size: 13px; line-height: 1.85; color: var(--tx-2); }
 .work .place + .caption { margin-top: 10px; }
 .work h2 + .caption { margin-top: 10px; }

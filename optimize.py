@@ -22,8 +22,7 @@ ROOT = Path(__file__).parent
 EXTS = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
 SIZES = {"img": 1600, "thumb": 600}   # docs 아래
 WALL = 2048
-QUALITY = 85
-RATIOS = {"3:2": 3 / 2, "2:3": 2 / 3, "1:1": 1.0, "4:3": 4 / 3, "3:4": 3 / 4, "16:9": 16 / 9, "5:4": 5 / 4, "4:5": 4 / 5}
+QUALITY = 82
 
 _SRGB = ImageCms.createProfile("sRGB")
 
@@ -47,11 +46,6 @@ def save(im, long_side, dest):
     dest.parent.mkdir(parents=True, exist_ok=True)
     # exif/icc를 넘기지 않으면 저장 시 메타데이터가 모두 빠진다
     im.save(dest, "JPEG", quality=QUALITY, optimize=True, progressive=True)
-
-
-def nearest_ratio(w, h):
-    r = w / h
-    return min(RATIOS, key=lambda k: abs(RATIOS[k] - r)), r
 
 
 def main():
@@ -95,9 +89,12 @@ def main():
             if max(w, h) < 2600:
                 print(f"  ⚠ {rel}: 긴 변 {max(w, h)}px (원본 2600px 이상 권장)")
             key = rel.with_suffix("").as_posix()
-            near, actual = nearest_ratio(w, h)
-            if declared.get(key) and declared[key] != near:
-                print(f"  ⚠ {rel}: yaml ratio {declared[key]} ↔ 실제 {near} ({actual:.3f})")
+            actual = w / h
+            dec = declared.get(key)
+            if dec:
+                a_, b_ = [int(x) for x in dec.split(":")]
+                if abs((a_ / b_) / actual - 1) > 0.015:
+                    print(f"  ⚠ {rel}: yaml ratio {dec} ↔ 실제 {w}:{h} ({actual:.3f})")
             for dest, side in outs:
                 save(im, side, dest)
         done += 1
