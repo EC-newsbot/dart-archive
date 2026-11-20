@@ -152,3 +152,26 @@ blockquote cite {
   letter-spacing: 0.03em;
   color: var(--tx-4);
 }
+
+/* ---------- PC (900px 이상) ----------
+   같은 HTML. 색·서체·행간은 그대로, 폭과 배치만 바꾼다. */
+@media (min-width: 900px) {
+  .wrap { max-width: 880px; padding-left: 40px; padding-right: 40px; }
+
+  .site-head { padding: 88px 0 64px; }
+  .artist-head { padding: 44px 0 36px; }
+
+  /* 작가 페이지 소개부: 약력 | 작가의 말 2단 */
+  .intro { display: grid; grid-template-columns: 240px 1fr; column-gap: 56px; }
+  .intro .bio { grid-column: 1; }
+  .intro .words { grid-column: 2; }
+  .intro:not(:has(.bio)) .words { grid-column: 1 / -1; max-width: 560px; }
+  .intro .words .sec:first-child { margin-top: 40px; }
+
+  /* 사진은 넓게, 글은 읽기 좋은 폭으로 */
+  .work { margin-top: 72px; }
+  .work h2, .work .place, .work .caption, .work blockquote { max-width: 560px; }
+
+  .artist-list .thumb { flex-basis: 160px; width: 160px; }
+  .nav { margin-top: 96px; }
+}

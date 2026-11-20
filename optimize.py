@@ -1,8 +1,8 @@
 """원본 이미지 → 웹용 3벌. EXIF 제거(촬영 위치 정보 방지).
 
     images/2612/{code}/01.jpg   (원본, 저장소에 올리지 않음)
- →  docs/a/2612/img/{code}/01.jpg     긴 변 1600px, 품질 85
-    docs/a/2612/thumb/{code}/01.jpg   긴 변 600px
+ →  docs/a/2612/img/{code}/01.jpg     긴 변 1200px, 품질 85
+    docs/a/2612/thumb/{code}/01.jpg   긴 변 400px
     assets/wall/{code}/01.jpg         긴 변 2048px (2라운드 가상 전시실용)
 
     python optimize.py            # 새로 바뀐 것만
@@ -20,9 +20,9 @@ import config
 
 ROOT = Path(__file__).parent
 EXTS = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
-SIZES = {"img": 1600, "thumb": 600}   # docs 아래
+SIZES = {"img": 1200, "thumb": 400}   # docs 아래
 WALL = 2048
-QUALITY = 82
+QUALITY = 85
 
 _SRGB = ImageCms.createProfile("sRGB")
 
