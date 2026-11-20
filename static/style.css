@@ -1,0 +1,153 @@
+/* D-art 아카이브 — 지면을 화면으로 옮긴다. 작업지시서 v2 6장 기준.
+   그림자·둥근 모서리·그라데이션·호버 연출 없음. 웹폰트 없음. */
+
+:root {
+  --ink:    #1E1C19;
+  --gold:   #CDAE72;
+  --gold-d: #B9A77E;
+  --paper:  #F7F5F1;
+  --tx:     #2a2a30;
+  --tx-2:   #55555c;
+  --tx-3:   #8a8a90;
+  --tx-4:   #9a9088;
+  --rule:   #d6d0c4;
+
+  --serif: "Noto Serif KR", "본명조", "AppleMyungjo", Batang, serif;
+  --sans:  "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17171a;
+    --tx:    #e6e3dd;
+    --tx-2:  #b3afa7;
+    --tx-3:  #8f8f95;
+    --tx-4:  #9a9088;
+    --rule:  #3a3935;
+    /* --gold, --gold-d는 그대로 */
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--tx);
+  font: 15px/2.0 var(--serif);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: left;               /* justify 금지 */
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 1px solid var(--gold-d); outline-offset: 3px; }
+
+p { margin: 0; }
+p + p { margin-top: 1em; }
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sec { margin-top: 40px; }
+
+.hair { width: 44px; height: 1px; background: var(--gold-d); margin: 20px 0; }
+
+/* ---------- 전시 메인 머리 ---------- */
+.site-head {
+  background: var(--ink);
+  color: var(--gold);
+  padding: 56px 0 44px;
+}
+.site-head h1 {
+  margin: 0;
+  font: 400 26px/1.4 var(--serif);
+  letter-spacing: 0.08em;
+}
+.site-head .en {
+  margin-top: 8px;
+  font: 11px/1.6 var(--sans);
+  letter-spacing: 0.18em;
+  color: var(--gold-d);
+}
+.site-head .tagline {
+  font: 13px/1.85 var(--serif);
+  color: var(--gold-d);
+}
+.site-head .hair { background: var(--gold-d); }
+
+/* ---------- 약력·정보 2단 ---------- */
+.bio-row { display: flex; gap: 14px; font-size: 13px; line-height: 1.95; }
+.bio-row .label { flex: 0 0 48px; text-align: center; color: var(--tx); font-weight: 500; }
+.bio-row .text  { flex: 1; color: var(--tx-2); }
+
+/* ---------- 참여 작가 목록 ---------- */
+.artist-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.artist-list li { border-bottom: 1px solid var(--rule); }
+.artist-list a { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.artist-list .name { font: 22px/1.4 var(--serif); letter-spacing: 0.06em; }
+.artist-list .en { font: 11px/1.6 var(--sans); letter-spacing: 0.18em; color: var(--tx-3); margin-left: 18px; }
+.artist-list .thumb { flex: 0 0 96px; width: 96px; }
+.artist-list .thumb img { width: 100%; height: auto; display: block; }
+
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); display: inline-block; margin-right: 10px; vertical-align: middle; }
+
+/* ---------- 작가 머리띠 ---------- */
+.artist-head {
+  background: var(--band);
+  padding: 28px 0 24px;
+}
+@media (prefers-color-scheme: dark) {
+  .artist-head { background: color-mix(in srgb, var(--band) 22%, var(--paper)); }
+}
+.artist-head h1 { margin: 0; font: 400 22px/1.4 var(--serif); letter-spacing: 0.06em; }
+.artist-head .en { font: 11px/1.6 var(--sans); letter-spacing: 0.18em; color: var(--tx-2); margin-top: 2px; }
+.artist-head .aff { font: 11px/1.6 var(--sans); letter-spacing: 0.04em; color: var(--tx-2); margin-top: 8px; }
+
+/* ---------- 인용문 ---------- */
+blockquote { margin: 0; padding-left: 16px; border-left: 1px solid var(--rule); }
+blockquote cite {
+  display: block;
+  font: 10px/1.9 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--tx-4);
+  font-style: normal;
+  margin-top: 8px;
+}
+
+/* ---------- 작품 ---------- */
+.work { margin-top: 56px; scroll-margin-top: 20px; }
+.work img { width: 100%; height: auto; display: block; }   /* 원본 비율. cover 금지 */
+.work h2 { margin: 12px 0 0; font: 400 15px/1.5 var(--serif); letter-spacing: 0.04em; }
+.work .place { margin-top: 4px; font: 11px/1.6 var(--sans); letter-spacing: 0.04em; color: var(--tx-3); }
+.work .caption { margin-top: 10px; font-size: 13px; line-height: 1.85; color: var(--tx-2); }
+.work .place + .caption { margin-top: 10px; }
+.work h2 + .caption { margin-top: 10px; }
+
+/* ---------- 하단 ---------- */
+.nav {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font: 12px/1.9 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--tx-2);
+}
+.nav a { padding: 6px 0; }
+
+.foot {
+  margin-top: 40px;
+  padding-bottom: 56px;
+  font: 10px/1.9 var(--sans);
+  letter-spacing: 0.03em;
+  color: var(--tx-4);
+}

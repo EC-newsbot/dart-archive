@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ a.name }} {{ a.name_en }} · {{ ex.title }}{% endblock %}
+{% block body %}
+<header class="artist-head" style="--band: {{ a.band }}; --dot: {{ a.color }}">
+  <div class="wrap">
+    <h1><span class="dot"></span>{{ a.name }}</h1>
+    <div class="en">{{ a.name_en }}</div>
+    {% if a.affiliation %}<div class="aff">{{ a.affiliation }}</div>{% endif %}
+  </div>
+</header>
+
+<main class="wrap">
+  {% if a.bio %}
+  <section class="sec">
+    {% for row in a.bio %}
+    <div class="bio-row"><div class="label">{{ row.label }}</div><div class="text">{{ row.text }}</div></div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if a.cited %}
+  <section class="sec">
+    <blockquote>
+      {% for p in a.cited.text | paras %}<p>{{ p }}</p>{% endfor %}
+      {% if a.cited.source %}<cite>{{ a.cited.source }}</cite>{% endif %}
+    </blockquote>
+  </section>
+  {% endif %}
+
+  {% if a.statement %}
+  <section class="sec">
+    <div class="hair"></div>
+    {% for p in a.statement | paras %}<p>{{ p }}</p>{% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="sec">
+    {% for w in works %}
+    <article class="work" id="{{ w.no }}">
+      <img src="{{ w.src }}" alt="{{ w.title }}" loading="lazy"{% if w.aspect %} style="aspect-ratio: auto {{ w.aspect }}"{% endif %}>
+      <h2>{{ w.title }}</h2>
+      {% if w.place %}<div class="place">{{ w.place }}</div>{% endif %}
+      {% if w.caption %}<div class="caption">{% for p in w.caption | paras %}<p>{{ p }}</p>{% endfor %}</div>{% endif %}
+    </article>
+    {% endfor %}
+  </section>
+
+  <nav class="nav">
+    {% if prev %}<a href="../{{ prev.code }}/">← {{ prev.name }}</a>{% else %}<span></span>{% endif %}
+    <a href="../">전시 메인</a>
+    {% if next %}<a href="../{{ next.code }}/">{{ next.name }} →</a>{% else %}<span></span>{% endif %}
+  </nav>
+
+  <footer class="foot">
+    <div>{{ ex.title }} · {{ ex.period }} · {{ ex.venue }}</div>
+    <div>{{ ex.copyright }}</div>
+  </footer>
+</main>
+{% endblock %}

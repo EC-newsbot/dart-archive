@@ -1,0 +1,69 @@
+# 전시 「발걸음을 멈춘 자리」 — 원고(54_디자인용역_원고.docx) 업로드 후 채운다.
+# 아래는 작업지시서 v2에서 확정된 값만 넣은 뼈대다. 비어 있는 값은 원고에서 옮긴다.
+exhibition:
+  code: "2612"
+  title: "발걸음을 멈춘 자리"
+  title_en: "WHERE WE STOPPED WALKING"
+  tagline: "다섯 사람이 멈춰 선 다섯 개의 자리"
+  year: 2026
+  period: "2026. 12. 17(목) — 12. 20(일)"
+  hours: "10:00 — 18:00"
+  venue: "갤러리 유원"
+  address: "대전광역시 중구 대종로550번길 5, 유원오피스텔 403호"
+  admission: "무료"
+  host: "(사)한국디지털사진가협회"
+  producer: "D-art"
+  support: "중소벤처기업부 2026년 2차 모두의 창업 프로젝트"
+  intro: ""   # 여는 글 전문 (네 문단) — 원고에서
+
+artists:
+  - code: lyj
+    name: "이영준"
+    name_en: "LEE YOUNG JUN"
+    affiliation: "(사)한국디지털사진가협회"
+    color: "#C98A63"
+    band: "#E6DCD3"
+    bio: []
+    statement: ""
+    works: []   # 7점
+
+  - code: ljs
+    name: "임재선"
+    name_en: "LIM JAE SUN"
+    affiliation: "(사)한국디지털사진가협회"
+    color: "#9BAE86"
+    band: "#DEE2D7"
+    bio: []
+    statement: ""
+    # cited: { text: "", source: "" }   # 임재선 작가만 해당
+    works: []   # 6점
+
+  - code: ihs
+    name: "임현숙"
+    name_en: "IM HYUN SOOK"
+    affiliation: "(사)한국디지털사진가협회"
+    color: "#7FACA9"
+    band: "#D7E0DF"
+    bio: []
+    statement: ""
+    works: []   # 6점
+
+  - code: cso
+    name: "최순옥"
+    name_en: "CHOI SOON OK"
+    affiliation: "(사)한국디지털사진가협회"
+    color: "#8A9CC0"
+    band: "#D9DDE4"
+    bio: []
+    statement: ""
+    works: []   # 7점
+
+  - code: pis
+    name: "박인숙"
+    name_en: "PARK IN SUK"
+    affiliation: "(사)한국디지털사진가협회"
+    color: "#C9AE70"
+    band: "#E7E1CF"
+    bio: []
+    statement: ""
+    works: []   # 7점. 「축복의 선물」은 place 미정 → 빈 문자열

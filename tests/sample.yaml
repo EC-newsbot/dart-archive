@@ -1,0 +1,49 @@
+# 빌드 검증용 가짜 데이터. 실제 원고가 아니다. (python build.py --data tests/sample.yaml --out /tmp/site)
+exhibition:
+  code: "2612"
+  title: "시험 전시"
+  title_en: "SAMPLE EXHIBITION"
+  tagline: "빌드 확인용 문장"
+  period: "2026. 12. 17(목) — 12. 20(일)"
+  hours: "10:00 — 18:00"
+  venue: "갤러리 유원"
+  address: "대전광역시 중구 대종로550번길 5, 유원오피스텔 403호"
+  admission: "무료"
+  host: "주최 시험"
+  producer: "D-art"
+  support: "지원사업 시험"
+  intro: |
+    첫째 문단입니다. 한글 단어가 쪼개지지 않는지 확인하기 위한 긴 문장을 넣어 봅니다.
+
+    둘째 문단입니다.
+artists:
+  - code: xyz
+    name: "가나다"
+    name_en: "GA NA DA"
+    affiliation: "시험 협회"
+    color: "#C98A63"
+    band: "#E6DCD3"
+    bio:
+      - { label: "2010", text: "사진 시작" }
+      - { label: "그 외", text: "입선 약 25회 <b>태그는 이스케이프</b>" }
+    cited:
+      text: |
+        인용문 첫 문단.
+
+        인용문 둘째 문단.
+      source: "출처, 「제목」, 『책』"
+    statement: |
+      작가의 말 문단 하나.
+
+      문단 둘.
+    works:
+      - { no: 1, title: "첫 작품", place: "대전 대청호", file: "xyz/01.jpg", ratio: "3:2", caption: "캡션 하나." }
+      - { no: 2, title: "대표작", place: "충남 태안", file: "xyz/02.jpg", ratio: "2:3", feature: true, caption: "대표작 첫 문단.\n\n대표작 둘째 문단." }
+      - { no: 3, title: "촬영지 없음", place: "", file: "xyz/03.jpg", ratio: "1:1", caption: "" }
+  - code: abc
+    name: "라마바"
+    name_en: "RA MA BA"
+    color: "#8A9CC0"
+    band: "#D9DDE4"
+    works:
+      - { no: 1, title: "유일한 작품", place: "서울", file: "abc/01.jpg", ratio: "3:2", feature: true }

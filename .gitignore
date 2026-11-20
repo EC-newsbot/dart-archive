@@ -221,3 +221,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- D-art archive ---
+# 작가 원본(긴 변 2600px+)과 원고는 저장소에 올리지 않는다 (저장소 Public)
+images/
+원고/
+*.docx
+# 2라운드 가상 전시실용 2048px 벽면 텍스처 (용량 큼, 필요 시 별도 보관)
+assets/wall/
+.DS_Store

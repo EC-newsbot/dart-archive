@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ ex.title }} · {{ ex.title_en }}{% endblock %}
+{% block body %}
+<header class="site-head">
+  <div class="wrap">
+    <h1>{{ ex.title }}</h1>
+    <div class="en">{{ ex.title_en }}</div>
+    <div class="hair"></div>
+    <div class="tagline">{{ ex.tagline }}</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sec">
+    <div class="bio-row"><div class="label">기간</div><div class="text">{{ ex.period }}</div></div>
+    <div class="bio-row"><div class="label">장소</div><div class="text">{{ ex.venue }}<br>{{ ex.address }}</div></div>
+    <div class="bio-row"><div class="label">시간</div><div class="text">{{ ex.hours }}</div></div>
+    <div class="bio-row"><div class="label">관람료</div><div class="text">{{ ex.admission }}</div></div>
+  </section>
+
+  {% if ex.intro %}
+  <section class="sec">
+    <div class="hair"></div>
+    {% for p in ex.intro | paras %}<p>{{ p }}</p>{% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="sec">
+    <ul class="artist-list">
+      {% for a in artists %}
+      <li style="--dot: {{ a.color }}">
+        <a href="{{ a.code }}/">
+          <span>
+            <span class="name"><span class="dot"></span>{{ a.name }}</span><br>
+            <span class="en">{{ a.name_en }}</span>
+          </span>
+          {% if a.thumb %}<span class="thumb"><img src="{{ a.thumb }}" alt="{{ a.thumb_alt }}" loading="lazy"></span>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <div>주최 {{ ex.host }} · 기획 {{ ex.producer }}</div>
+    <div>{{ ex.support }}</div>
+    <div>{{ ex.copyright }}</div>
+  </footer>
+</main>
+{% endblock %}
