@@ -15,7 +15,7 @@ import dataio
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
 ROOT = Path(__file__).parent
-DEFAULT_COPYRIGHT = "모든 작품의 저작권은 각 작가에게 있으며, 무단 복제와 전재를 금합니다."
+DEFAULT_COPYRIGHT = "수록 사진의 저작권은 각 작가에게 있습니다. 무단 전재와 복제를 금합니다."
 PAGE_LIMIT = 3 * 1024 * 1024  # 작가 페이지 총 용량 상한 (검수 기준)
 
 
@@ -72,6 +72,7 @@ def build_one(env, data, out):
     ex = dict(data["exhibition"])
     ex.setdefault("copyright", DEFAULT_COPYRIGHT)
     ex.setdefault("intro", "")
+    ex.setdefault("intro_by", "")
     code = ex["code"]
     # 선택 항목은 빈 값으로 정규화 (템플릿에서 StrictUndefined 오류 방지)
     artists = []

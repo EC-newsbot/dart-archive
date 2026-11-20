@@ -175,3 +175,6 @@ blockquote cite {
   .artist-list .thumb { flex-basis: 160px; width: 160px; }
   .nav { margin-top: 96px; }
 }
+
+/* 여는 글 서명 */
+.sign { margin-top: 1.4em; text-align: right; font: 11px/1.6 var(--sans); letter-spacing: 0.18em; color: var(--tx-3); }

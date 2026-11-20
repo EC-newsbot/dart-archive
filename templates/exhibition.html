@@ -22,6 +22,7 @@
   <section class="sec">
     <div class="hair"></div>
     {% for p in ex.intro | paras %}<p>{{ p }}</p>{% endfor %}
+    {% if ex.intro_by %}<p class="sign">{{ ex.intro_by }}</p>{% endif %}
   </section>
   {% endif %}
 
