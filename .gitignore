@@ -230,3 +230,6 @@ images/
 # 2라운드 가상 전시실용 2048px 벽면 텍스처 (용량 큼, 필요 시 별도 보관)
 assets/wall/
 .DS_Store
+
+# 원본 폰트 파일(서브셋 woff2만 docs/에 둔다)
+fonts/

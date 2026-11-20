@@ -25,12 +25,15 @@ docs/              빌드 결과 (GitHub Pages가 서빙)
 pip install -r requirements.txt
 python optimize.py     # images/2612/{작가코드}/01.jpg … → docs/ 용 이미지
 python build.py        # docs/ 생성, 파일 목록과 작가 페이지별 용량 출력
+python tools/subset_fonts.py   # build 다음에. docs/static/fonts/ 웹폰트 생성
 python qr.py           # qr/*.svg 6개
 ```
 
 테스트: `python build.py --data tests/sample.yaml --out /tmp/site`
 
 ## 메모
+
+- 서체: 도록과 같은 Noto Serif/Sans CJK KR(본명조·본고딕, SIL OFL). 본문 Serif 400·500, 보조 Sans 300·400, Bold 미사용. 글자 수가 많은 한글 폰트라 `tools/subset_fonts.py`가 사이트에서 쓰는 글자만 남겨 woff2(합계 약 165KB)로 만든다. 원고나 템플릿 글이 바뀌면 build 후 다시 실행. 원본 폰트는 `fonts/`(gitignore) 또는 시스템 폰트 폴더에서 읽는다.
 
 - 반응형: 같은 HTML이 모바일(기본, 375px 기준)과 PC(900px 이상, 최대 880px)에서 다르게 배치된다. 색·서체·행간은 공통.
 - 웹용 이미지는 긴 변 1200px(품질 85), 썸네일 400px. 원본 유출 방지를 위해 일부러 작게 둔다.

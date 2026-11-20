@@ -180,6 +180,9 @@ def main():
         for a in data["artists"]:
             page = out / "a" / code / a["code"] / "index.html"
             size = page.stat().st_size + (out / "static" / "style.css").stat().st_size
+            fonts = out / "static" / "fonts"
+            if fonts.exists():
+                size += sum(f.stat().st_size for f in fonts.glob("*.woff2"))
             missing = 0
             for w in a.get("works") or []:
                 img = out / "a" / code / "img" / w["file"]

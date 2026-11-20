@@ -1,6 +1,13 @@
 /* D-art 아카이브 — 지면을 화면으로 옮긴다. 작업지시서 v2 6장 기준.
    그림자·둥근 모서리·그라데이션·호버 연출 없음. 웹폰트 없음. */
 
+/* 도록과 같은 서체: Noto CJK KR (본명조·본고딕), SIL OFL.
+   tools/subset_fonts.py가 이 사이트에서 쓰는 글자만 남긴 woff2를 만든다. Bold(700) 미사용. */
+@font-face { font-family: "D-art Serif"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/serif-400.woff2") format("woff2"); }
+@font-face { font-family: "D-art Serif"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/serif-500.woff2") format("woff2"); }
+@font-face { font-family: "D-art Sans";  font-weight: 300; font-style: normal; font-display: swap; src: url("fonts/sans-300.woff2")  format("woff2"); }
+@font-face { font-family: "D-art Sans";  font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/sans-400.woff2")  format("woff2"); }
+
 :root {
   --ink:    #1E1C19;
   --gold:   #CDAE72;
@@ -12,8 +19,8 @@
   --tx-4:   #9a9088;
   --rule:   #d6d0c4;
 
-  --serif: "Noto Serif KR", "본명조", "AppleMyungjo", Batang, serif;
-  --sans:  "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", sans-serif;
+  --serif: "D-art Serif", "Noto Serif CJK KR", "Noto Serif KR", "본명조", "AppleMyungjo", Batang, serif;
+  --sans:  "D-art Sans", "Noto Sans CJK KR", "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -178,3 +185,6 @@ blockquote cite {
 
 /* 여는 글 서명 */
 .sign { margin-top: 1.4em; text-align: right; font: 11px/1.6 var(--sans); letter-spacing: 0.18em; color: var(--tx-3); }
+
+/* 영문명: 본고딕 Light (font 단축 속성보다 뒤에 와야 적용된다) */
+.site-head .en, .artist-head .en, .artist-list .en { font-weight: 300; }
