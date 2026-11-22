@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ promo.title }} · {{ ex.title }}{% endblock %}
+{% block body %}
+<header class="site-head">
+  <div class="wrap">
+    <h1>{{ ex.title }}</h1>
+    <div class="en">{{ ex.title_en }}</div>
+    <div class="hair"></div>
+    <div class="tagline">{{ promo.title }}</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="sec promo">
+    <video controls playsinline preload="metadata" poster="{{ promo.poster }}" width="{{ promo.width }}" height="{{ promo.height }}">
+      <source src="{{ promo.file }}" type="video/mp4">
+      <a href="{{ promo.file }}">{{ promo.title }} 보기</a>
+    </video>
+  </section>
+
+  <section class="sec">
+    <div class="bio-row"><div class="label">기간</div><div class="text">{{ ex.period }}</div></div>
+    <div class="bio-row"><div class="label">장소</div><div class="text">{{ ex.venue }}<br>{{ ex.address }}</div></div>
+  </section>
+
+  <nav class="nav">
+    <a href="../../a/{{ ex.code }}/">전시 아카이브 →</a>
+  </nav>
+
+  <footer class="foot">
+    <div>주최 {{ ex.host }} · 기획 {{ ex.producer }}</div>
+    <div>{{ ex.support }}</div>
+    <div>{{ ex.copyright }}</div>
+  </footer>
+</main>
+{% endblock %}

@@ -19,12 +19,18 @@ def targets(data):
     yield f"{code}", f"{config.BASE_URL}/a/{code}/"
     for artist in data["artists"]:
         yield f"{code}-{artist['code']}", f"{config.BASE_URL}/a/{code}/{artist['code']}/"
+    if data.get("promo"):
+        yield f"{code}-promo", f"{config.BASE_URL}/v/{code}/"
 
 
 def main():
+    import sys
+    only = set(sys.argv[2:]) if len(sys.argv) > 2 and sys.argv[1] == "--only" else None   # 예: python qr.py --only 2612-promo
     data = dataio.load(ROOT / "data" / f"{config.EXHIBITION_CODE}.yaml")
     OUT.mkdir(exist_ok=True)
     for name, url in targets(data):
+        if only and name not in only:
+            continue
         qr = segno.make(url, error="m", micro=False)  # M(15%) 복원
         path = OUT / f"{name}.svg"
         # border=4: 인쇄 시 조용 영역(quiet zone) 확보. 줄이지 말 것.

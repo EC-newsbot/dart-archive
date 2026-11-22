@@ -188,3 +188,7 @@ blockquote cite {
 
 /* 영문명: 본고딕 Light (font 단축 속성보다 뒤에 와야 적용된다) */
 .site-head .en, .artist-head .en, .artist-list .en { font-weight: 300; }
+
+/* ---------- 홍보영상 ---------- */
+/* 세로형 영상. 원본 비율 유지(자르지 않음), 자동재생·반복 없음. */
+.promo video { display: block; width: 100%; max-width: 400px; height: auto; background: var(--ink); }

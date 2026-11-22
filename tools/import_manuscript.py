@@ -51,6 +51,9 @@ INTRO = [
 ]
 INTRO_BY = "D-art"
 
+# 홍보영상 별도 아카이브 (/v/2612/). 파일은 tools/encode_video.py가 docs/v/2612/에 만든다.
+PROMO = {"title": "홍보영상", "file": "promo.mp4", "poster": "poster.jpg", "width": 796, "height": 1128}
+
 
 def flatten(path):
     d = docx.Document(path)
@@ -211,6 +214,10 @@ def render(artists):
         o.append(f"  {k}: {q(v) if isinstance(v, str) else v}\n")
     o.append(emit_text("intro", INTRO, 2))
     o.append(f"  intro_by: {q(INTRO_BY)}\n\n")
+    o.append("promo:\n")
+    for k, v in PROMO.items():
+        o.append(f"  {k}: {q(v) if isinstance(v, str) else v}\n")
+    o.append("\n")
     o.append("artists:\n")
     for a in artists:
         o.append(f"  - code: {a['code']}\n    name: {q(a['name'])}\n    name_en: {q(a['name_en'])}\n"

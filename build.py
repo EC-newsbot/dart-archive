@@ -123,6 +123,17 @@ def build_one(env, data, out):
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(html, encoding="utf-8")
         written.append(p)
+    # 홍보영상 별도 페이지: /v/{code}/
+    promo = data.get("promo")
+    if promo:
+        html = env.get_template("video.html").render(ex=ex, promo=promo, root="../../")
+        p = out / "v" / code / "index.html"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(html, encoding="utf-8")
+        written.append(p)
+        for name in (promo["file"], promo["poster"]):
+            if not (p.parent / name).exists():
+                print(f"  ⚠ {p.parent.relative_to(out)}/{name} 없음 (python tools/encode_video.py 로 생성)", file=sys.stderr)
     return written
 
 
@@ -193,6 +204,14 @@ def main():
             flag = "  ⚠ 3MB 초과" if size > PAGE_LIMIT else ""
             note = f"  (이미지 {missing}장 없음)" if missing else ""
             print(f"  {a['code']}  {size / 1024 / 1024:5.2f} MB{flag}{note}")
+        promo = data.get("promo")
+        if promo:
+            d = out / "v" / code
+            size = sum(f.stat().st_size for f in d.glob("*") if f.is_file()) + (out / "static" / "style.css").stat().st_size
+            fonts = out / "static" / "fonts"
+            if fonts.exists():
+                size += sum(f.stat().st_size for f in fonts.glob("*.woff2"))
+            print(f"  v/{code}  {size / 1024 / 1024:5.2f} MB  (영상 페이지, 재생 전에는 포스터만 받음)")
 
 
 if __name__ == "__main__":

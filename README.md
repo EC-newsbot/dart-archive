@@ -26,12 +26,15 @@ pip install -r requirements.txt
 python optimize.py     # images/2612/{작가코드}/01.jpg … → docs/ 용 이미지
 python build.py        # docs/ 생성, 파일 목록과 작가 페이지별 용량 출력
 python tools/subset_fonts.py   # build 다음에. docs/static/fonts/ 웹폰트 생성
-python qr.py           # qr/*.svg 6개
+python qr.py           # qr/*.svg (전시 1 + 작가 5 + 홍보영상 1)
+python tools/encode_video.py 원본.mp4   # 홍보영상 → docs/v/2612/ (promo.mp4, poster.jpg)
 ```
 
 테스트: `python build.py --data tests/sample.yaml --out /tmp/site`
 
 ## 메모
+
+- 홍보영상은 별도 페이지 `/v/2612/`(전시 아카이브 `/a/2612/`와 분리). 자동재생 없음, 재생 전에는 포스터(약 16KB)만 받는다. 영상이 바뀔 때만 다시 커밋한다(같은 파일을 반복 커밋하면 저장소 용량이 계속 늘어난다).
 
 - 서체: 도록과 같은 Noto Serif/Sans CJK KR(본명조·본고딕, SIL OFL). 본문 Serif 400·500, 보조 Sans 300·400, Bold 미사용. 글자 수가 많은 한글 폰트라 `tools/subset_fonts.py`가 사이트에서 쓰는 글자만 남겨 woff2(합계 약 165KB)로 만든다. 원고나 템플릿 글이 바뀌면 build 후 다시 실행. 원본 폰트는 `fonts/`(gitignore) 또는 시스템 폰트 폴더에서 읽는다.
 

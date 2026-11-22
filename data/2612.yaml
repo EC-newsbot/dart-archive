@@ -25,6 +25,13 @@ exhibition:
     작품 곁에 적힌 글은 작가들이 직접 들려주신 이야기를 옮긴 것입니다. 사진이 찍힌 날의 날씨와 기다린 시간, 그 자리에 가게 된 까닭이 거기에 있습니다. 사진만으로는 보이지 않는 것들입니다.
   intro_by: "D-art"
 
+promo:
+  title: "홍보영상"
+  file: "promo.mp4"
+  poster: "poster.jpg"
+  width: 796
+  height: 1128
+
 artists:
   - code: lyj
     name: "이영준"
